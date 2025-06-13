@@ -30,3 +30,8 @@ First, create a `.env` file in the root directory of the project. Inside the fil
 OPENAI_API_KEY="your_api_key_here"
 ```
 Save the file and close it.
+
+
+### References
+- https://github.com/codebasics/ai-agents
+- https://github.com/daveebbelaar/langchain-experiments
