@@ -34,4 +34,8 @@ Save the file and close it.
 
 ### References
 - https://github.com/codebasics/ai-agents
+    - https://www.youtube.com/@codebasics
 - https://github.com/daveebbelaar/langchain-experiments
+    - https://www.youtube.com/@daveebbelaar
+- https://github.com/krishnaik06
+    - https://www.youtube.com/@krishnaik06
