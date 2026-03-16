@@ -6,15 +6,10 @@ This script demonstrates:
 2. Error handling for unsupported providers
 3. Case-insensitivity of provider names
 4. Comparison of responses from different providers
+5. Retry configuration and functionality
 """
 
-import sys
-from pathlib import Path
-
-# Add parent directory to path for imports
-sys.path.insert(0, str(Path(__file__).parent.parent))
-
-from llm_factory import LLMFactory
+from llm_clients import LLMFactory
 
 
 def test_basic_usage():
@@ -116,6 +111,34 @@ def test_available_providers():
         print(f"  - {provider}")
 
 
+def test_retry_configuration():
+    """Test that factory has retry configuration."""
+    print("\n" + "=" * 60)
+    print("TEST 6: Retry Configuration")
+    print("=" * 60)
+
+    # Test default configuration
+    factory_default = LLMFactory()
+    print("\nDefault configuration:")
+    print(f"  - Max retries: {factory_default.max_retries}")
+    print(f"  - Min wait: {factory_default.min_wait}s")
+    print(f"  - Max wait: {factory_default.max_wait}s")
+
+    # Test custom configuration
+    factory_custom = LLMFactory(max_retries=5, min_wait=2, max_wait=30)
+    print("\nCustom configuration:")
+    print(f"  - Max retries: {factory_custom.max_retries}")
+    print(f"  - Min wait: {factory_custom.min_wait}s")
+    print(f"  - Max wait: {factory_custom.max_wait}s")
+
+    print("\nRetry mechanism automatically handles:")
+    print("  - Rate limit errors (429)")
+    print("  - Network/connection errors")
+    print("  - Server errors (5xx)")
+    print("  - Other transient API errors")
+    print("\nRetries use exponential backoff strategy")
+
+
 def main():
     """Run all tests."""
     print("\n" + "=" * 60)
@@ -124,6 +147,7 @@ def main():
 
     # Run tests
     test_available_providers()
+    test_retry_configuration()
     test_basic_usage()
     test_case_insensitivity()
     test_error_handling()
