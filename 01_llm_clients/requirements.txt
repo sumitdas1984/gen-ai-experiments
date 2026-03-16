@@ -1,3 +1,5 @@
 python-dotenv
 groq
 openai
+anthropic
+google-genai
