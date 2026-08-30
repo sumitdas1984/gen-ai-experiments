@@ -6,10 +6,7 @@ A bare-minimum FastAPI app with in-memory storage (no real DB connection).
 
 ```
 07_fastapi_app/
-├── main.py            # FastAPI app entry point
-├── routes/
-│   ├── __init__.py
-│   └── users.py       # User CRUD endpoints
+├── app.py            # FastAPI app (single file)
 ├── requirements.txt
 └── README.md
 ```
@@ -27,7 +24,7 @@ A bare-minimum FastAPI app with in-memory storage (no real DB connection).
 
 ```bash
 pip install -r requirements.txt
-uvicorn main:app --reload
+uvicorn app:app --reload
 ```
 
 Open http://127.0.0.1:8000/docs for the interactive Swagger UI.
